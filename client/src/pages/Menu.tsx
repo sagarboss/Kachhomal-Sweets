@@ -37,8 +37,7 @@ const PRODUCTS: Product[] = [
     name: "Sev Mithai (Kesar)",
     price: 450,
     categoryId: 1,
-    imageUrl:
-      "https://delicacysweets.com/shop/Chaina-Ram-Sindhi-Halwai-1246/top-selling?srsltid=AfmBOopqvhn7gMWn1-pbvW6BFCTj2PfIt0CC33PO-oZSiLMxam67-hoC",
+    imageUrl: "Sev Mithai.jpg",
     isSignature: true,
     description: "Our iconic specialty with saffron.",
   },
