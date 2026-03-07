@@ -26,7 +26,7 @@ const CATEGORIES = [
   {
     id: 4,
     name: "Savory Namkeens",
-    description: "Crispy and savory snacks for your daily cravings.",
+    description: "Crispy and savory snackss for your daily cravings.",
   },
 ];
 
