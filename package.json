@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "homepage": "https://sagarboss.github.io/Kachhomal-Sweets",
   "scripts": {
     "dev": "NODE_ENV=development tsx server/index.ts",
     "build": "tsx script/build.ts",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist/public",
     "start": "NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
     "db:push": "drizzle-kit push"
@@ -94,6 +97,7 @@
     "autoprefixer": "^10.4.20",
     "drizzle-kit": "^0.31.8",
     "esbuild": "^0.25.0",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.20.5",
