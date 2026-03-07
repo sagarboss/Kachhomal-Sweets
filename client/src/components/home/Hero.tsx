@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, ShoppingBag } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
@@ -57,16 +57,8 @@ export function Hero() {
               href="/menu"
               className="bg-secondary text-primary font-bold px-8 py-4 rounded-sm hover:bg-white hover:text-primary hover:-translate-y-1 transition-all duration-300 shadow-[0_0_40px_rgba(212,175,55,0.3)] flex items-center gap-2 group"
             >
-              <ShoppingBag className="w-5 h-5" />
-              Order Online
-              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            
-            <Link
-              href="/menu"
-              className="bg-transparent border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-sm hover:bg-white/10 hover:border-white transition-all duration-300 backdrop-blur-sm"
-            >
               View Menu
+              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>

@@ -65,13 +65,6 @@ export function Navbar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/menu"
-              className="bg-secondary text-primary font-semibold px-6 py-2.5 rounded-sm hover:bg-secondary/90 hover:-translate-y-0.5 transition-all duration-300 shadow-md shadow-black/10 flex items-center gap-2"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              Order Online
-            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -104,14 +97,6 @@ export function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <div className="w-full h-px bg-white/10 my-2"></div>
-              <Link
-                href="/menu"
-                className="w-full text-center bg-secondary text-primary font-bold py-4 rounded-sm shadow-lg text-lg flex items-center justify-center gap-2"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                Order Online
-              </Link>
             </div>
           </motion.div>
         )}

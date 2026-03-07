@@ -95,12 +95,12 @@ export function Contact() {
                 <h4 className="font-display font-bold text-xl text-primary mb-2">Ready to Order?</h4>
                 <p className="text-sm text-muted-foreground mb-4">We are also available on major food delivery platforms.</p>
                 <div className="flex gap-4">
-                  <button className="flex-1 bg-red-500 text-white font-bold py-2 rounded-sm hover:bg-red-600 transition-colors">
+                  <a href="https://www.zomato.com/mumbai/kachhomal-sweets-1-ulhasnagar/order" target="_blank" rel="noopener noreferrer" className="flex-1 bg-red-500 text-white font-bold py-2 rounded-sm hover:bg-red-600 transition-colors text-center block">
                     Zomato
-                  </button>
-                  <button className="flex-1 bg-orange-500 text-white font-bold py-2 rounded-sm hover:bg-orange-600 transition-colors">
+                  </a>
+                  <a href="https://www.swiggy.com/city/mumbai/kachhomal-sweets-and-namkeen-ulhasnagar-rest1127727" target="_blank" rel="noopener noreferrer" className="flex-1 bg-orange-500 text-white font-bold py-2 rounded-sm hover:bg-orange-600 transition-colors text-center block">
                     Swiggy
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
