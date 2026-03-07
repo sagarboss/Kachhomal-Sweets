@@ -1,25 +1,19 @@
-import { useProducts } from "@/hooks/use-products";
 import { ProductCard } from "@/components/ProductCard";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import type { Product } from "@shared/schema";
 
-// Fallback data in case API fails or is empty initially
-const FALLBACK_SIGNATURES = [
-  { id: 1, name: "Sev Mithai (Kesar & Plain)", description: "Our iconic specialty, melt-in-mouth texture.", isSignature: true },
-  { id: 2, name: "Kaju Katli & Mix Kaju Sweets", description: "Premium cashew fudge, perfectly balanced sweetness.", isSignature: true },
-  { id: 3, name: "Mawa Gulab Jamun & Rasgulla", description: "Soft, spongy, dripping with fragrant syrup.", isSignature: true },
-  { id: 4, name: "Motichoor Ladoo", description: "Tiny besan pearls bound with pure desi ghee.", isSignature: true },
-  { id: 5, name: "Special Kesar Peda", description: "Rich milk solids infused with pure saffron.", isSignature: true },
-  { id: 6, name: "Assorted Namkeens", description: "Crispy daily snacks and premium farsan.", isSignature: true },
+// Static signature products data
+const SIGNATURE_PRODUCTS: Product[] = [
+  { id: 1, name: "Sev Mithai (Kesar)", description: "Our iconic specialty, melt-in-mouth texture with saffron.", price: 450, categoryId: 1, imageUrl: "https://images.unsplash.com/photo-1634839845341-3b769213bc54?q=80&w=600&auto=format&fit=crop", isSignature: true },
+  { id: 2, name: "Kaju Katli", description: "Premium cashew fudge, perfectly balanced sweetness.", price: 900, categoryId: 2, imageUrl: "https://images.unsplash.com/photo-1599599811452-9dae2da9bc76?q=80&w=600&auto=format&fit=crop", isSignature: true },
+  { id: 3, name: "Mawa Gulab Jamun", description: "Soft, spongy, dripping with fragrant syrup.", price: 350, categoryId: 1, imageUrl: "https://images.unsplash.com/photo-1610411330366-234220b22da9?q=80&w=600&auto=format&fit=crop", isSignature: true },
+  { id: 4, name: "Motichoor Ladoo", description: "Tiny besan pearls bound with pure desi ghee.", price: 400, categoryId: 3, imageUrl: "https://images.unsplash.com/photo-1605807646983-377bc5a76493?q=80&w=600&auto=format&fit=crop", isSignature: true },
+  { id: 5, name: "Special Kesar Peda", description: "Rich milk solids infused with pure saffron.", price: 500, categoryId: 1, imageUrl: "https://images.unsplash.com/photo-1589131651877-621535728a50?q=80&w=600&auto=format&fit=crop", isSignature: true },
+  { id: 6, name: "Assorted Namkeens", description: "Crispy daily snacks and premium farsan.", price: 250, categoryId: 4, imageUrl: "https://images.unsplash.com/photo-1606822295697-3f30a91f582f?q=80&w=600&auto=format&fit=crop", isSignature: true },
 ];
 
 export function SignatureProducts() {
-  const { data: products, isLoading } = useProducts();
-
-  // Filter for signature products, fallback to static list if none exist
-  const signatureItems = products?.filter(p => p.isSignature) || [];
-  const displayItems = signatureItems.length > 0 ? signatureItems : FALLBACK_SIGNATURES;
-
   return (
     <section className="py-24 bg-hero-pattern bg-fixed relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,28 +32,19 @@ export function SignatureProducts() {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="animate-pulse bg-muted rounded-xl h-80"></div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayItems.slice(0, 6).map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                {/* @ts-ignore - handling fallback data gracefully */}
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {SIGNATURE_PRODUCTS.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProductCard product={product} />
+            </motion.div>
+          ))}
+        </div>
 
         <div className="mt-16 text-center">
           <Link 

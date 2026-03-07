@@ -15,10 +15,10 @@ export function Footer() {
               Bringing You the Authentic Taste of Traditions Since 1952. An iconic brand in Ulhasnagar known for premium quality and authentic flavors.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all duration-300">
+              <a href="https://www.instagram.com/kachhomalsweets/?hl=en" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all duration-300">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all duration-300">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all duration-300">
                 <Facebook className="w-5 h-5" />
               </a>
             </div>
@@ -89,8 +89,8 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-4 text-sm font-medium">
             <span className="text-primary-foreground/60">Order via:</span>
-            <a href="#" className="text-white hover:text-secondary transition-colors border border-white/20 px-3 py-1.5 rounded-sm hover:border-secondary">Zomato</a>
-            <a href="#" className="text-white hover:text-secondary transition-colors border border-white/20 px-3 py-1.5 rounded-sm hover:border-secondary">Swiggy</a>
+            <a href="https://www.zomato.com/mumbai/kachhomal-sweets-1-ulhasnagar/order" target="_blank" rel="noopener noreferrer" className="text-white hover:text-secondary transition-colors border border-white/20 px-3 py-1.5 rounded-sm hover:border-secondary">Zomato</a>
+            <a href="https://www.swiggy.com/city/mumbai/kachhomal-sweets-and-namkeen-ulhasnagar-rest1127727" target="_blank" rel="noopener noreferrer" className="text-white hover:text-secondary transition-colors border border-white/20 px-3 py-1.5 rounded-sm hover:border-secondary">Swiggy</a>
           </div>
         </div>
       </div>

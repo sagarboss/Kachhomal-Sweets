@@ -2,37 +2,46 @@ import { useState, useMemo } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ProductCard } from "@/components/ProductCard";
-import { useProducts } from "@/hooks/use-products";
-import { useCategories } from "@/hooks/use-categories";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
+import type { Product } from "@shared/schema";
 
-// Fallback categories if API is empty
-const FALLBACK_CATEGORIES = [
-  { id: 1, name: "Traditional Sweets" },
-  { id: 2, name: "Specialty Barfis" },
-  { id: 3, name: "Ladoos" },
-  { id: 4, name: "Savory Namkeens" }
+// Static categories
+const CATEGORIES = [
+  { id: 1, name: "Traditional Sweets", description: "Authentic traditional sweets made with pure ghee." },
+  { id: 2, name: "Specialty Barfis", description: "Rich and creamy barfis with premium ingredients." },
+  { id: 3, name: "Ladoos", description: "Perfectly round and delicious ladoos for all occasions." },
+  { id: 4, name: "Savory Namkeens", description: "Crispy and savory snacks for your daily cravings." }
+];
+
+// Static products data
+const PRODUCTS: Product[] = [
+  { id: 1, name: "Sev Mithai (Kesar)", price: 450, categoryId: 1, imageUrl: "https://images.unsplash.com/photo-1634839845341-3b769213bc54?q=80&w=600&auto=format&fit=crop", isSignature: true, description: "Our iconic specialty with saffron." },
+  { id: 2, name: "Kaju Katli", price: 900, categoryId: 2, imageUrl: "https://images.unsplash.com/photo-1599599811452-9dae2da9bc76?q=80&w=600&auto=format&fit=crop", isSignature: true, description: "Premium cashew fudge." },
+  { id: 3, name: "Mawa Gulab Jamun", price: 350, categoryId: 1, imageUrl: "https://images.unsplash.com/photo-1610411330366-234220b22da9?q=80&w=600&auto=format&fit=crop", isSignature: true, description: "Soft and spongy in fragrant syrup." },
+  { id: 4, name: "Motichoor Ladoo", price: 400, categoryId: 3, imageUrl: "https://images.unsplash.com/photo-1605807646983-377bc5a76493?q=80&w=600&auto=format&fit=crop", isSignature: true, description: "Tiny besan pearls with ghee." },
+  { id: 5, name: "Special Kesar Peda", price: 500, categoryId: 1, imageUrl: "https://images.unsplash.com/photo-1589131651877-621535728a50?q=80&w=600&auto=format&fit=crop", isSignature: true, description: "Rich milk solids with saffron." },
+  { id: 6, name: "Assorted Farsan", price: 250, categoryId: 4, imageUrl: "https://images.unsplash.com/photo-1606822295697-3f30a91f582f?q=80&w=600&auto=format&fit=crop", isSignature: true, description: "Crispy daily snacks." },
+  { id: 7, name: "Plain Sev Mithai", price: 400, categoryId: 1, imageUrl: null, isSignature: false, description: null },
+  { id: 8, name: "Mix Kaju Sweets", price: 1000, categoryId: 2, imageUrl: null, isSignature: true, description: null },
+  { id: 9, name: "Rasgulla", price: 300, categoryId: 1, imageUrl: null, isSignature: true, description: null },
+  { id: 10, name: "Dry Fruit Atta Ladoo", price: 600, categoryId: 3, imageUrl: null, isSignature: true, description: null },
+  { id: 11, name: "Kandi Peda", price: 480, categoryId: 1, imageUrl: null, isSignature: true, description: null },
+  { id: 12, name: "Daily Snacks", price: 200, categoryId: 4, imageUrl: null, isSignature: false, description: null },
 ];
 
 export default function Menu() {
-  const { data: productsData, isLoading: productsLoading } = useProducts();
-  const { data: categoriesData, isLoading: categoriesLoading } = useCategories();
-  
   const [activeCategory, setActiveCategory] = useState<number | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState("");
 
-  const categories = categoriesData && categoriesData.length > 0 ? categoriesData : FALLBACK_CATEGORIES;
-  const products = productsData || [];
-
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
+    return PRODUCTS.filter((product) => {
       const matchesCategory = activeCategory === 'all' || product.categoryId === activeCategory;
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesCategory && matchesSearch;
     });
-  }, [products, activeCategory, searchQuery]);
+  }, [activeCategory, searchQuery]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -64,7 +73,7 @@ export default function Menu() {
             >
               All Items
             </button>
-            {categories.map((cat) => (
+            {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
@@ -95,13 +104,7 @@ export default function Menu() {
         </div>
 
         {/* Content Area */}
-        {productsLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="animate-pulse bg-muted rounded-xl h-80"></div>
-            ))}
-          </div>
-        ) : filteredProducts.length > 0 ? (
+        {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product, index) => (
               <motion.div

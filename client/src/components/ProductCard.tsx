@@ -1,5 +1,4 @@
 import { Product } from "@shared/schema";
-import { ShoppingBag } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -30,13 +29,6 @@ export function ProductCard({ product, delay = 0 }: ProductCardProps) {
             Signature
           </div>
         )}
-        
-        {/* Quick Add Button overlay */}
-        <div className="absolute bottom-4 left-0 w-full px-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <button className="w-full bg-primary text-white py-3 rounded-sm font-semibold flex items-center justify-center gap-2 hover:bg-primary/90">
-            <ShoppingBag className="w-4 h-4" /> Add to Order
-          </button>
-        </div>
       </div>
 
       {/* Content */}
