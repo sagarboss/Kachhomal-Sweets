@@ -1,7 +1,7 @@
 import { ProductCard } from "@/components/ProductCard";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import type { Product } from "@shared/schema";
+import type { Product } from "@/lib/types";
 
 // Static signature products data
 const SIGNATURE_PRODUCTS: Product[] = [

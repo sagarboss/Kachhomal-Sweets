@@ -19,11 +19,10 @@ export default defineConfig({
         ]
       : []),
   ],
-  base: "/Kachhomal-Sweets/",
+  base: process.env.NODE_ENV === 'production' ? '/Kachhomal-Sweets/' : '/',
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },

@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ProductCard } from "@/components/ProductCard";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
-import type { Product } from "@shared/schema";
+import type { Product } from "@/lib/types";
 
 // Static categories
 const CATEGORIES = [

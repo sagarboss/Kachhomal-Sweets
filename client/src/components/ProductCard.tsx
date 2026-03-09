@@ -1,4 +1,4 @@
-import { Product } from "@shared/schema";
+import { Product } from "@/lib/types";
 
 interface ProductCardProps {
   product: Product;
