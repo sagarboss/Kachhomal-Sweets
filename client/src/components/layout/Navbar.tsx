@@ -52,16 +52,30 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-primary-foreground/90 hover:text-secondary transition-colors uppercase tracking-wider relative group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isHashLink = link.href.startsWith("/#");
+              const id = isHashLink ? link.href.substring(2) : "";
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    if (isHashLink && location === "/") {
+                      e.preventDefault();
+                      const element = document.getElementById(id);
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                  }}
+                  className="text-sm font-medium text-primary-foreground/90 hover:text-secondary transition-colors uppercase tracking-wider relative group"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
@@ -88,15 +102,30 @@ export function Navbar() {
             className="fixed inset-0 top-[60px] z-40 bg-primary/95 backdrop-blur-xl md:hidden pt-8 border-t border-white/10"
           >
             <div className="flex flex-col px-6 gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-xl font-display font-medium text-primary-foreground hover:text-secondary transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isHashLink = link.href.startsWith("/#");
+                const id = isHashLink ? link.href.substring(2) : "";
+
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      if (isHashLink && location === "/") {
+                        e.preventDefault();
+                        const element = document.getElementById(id);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                        setIsMobileMenuOpen(false);
+                      }
+                    }}
+                    className="text-xl font-display font-medium text-primary-foreground hover:text-secondary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}

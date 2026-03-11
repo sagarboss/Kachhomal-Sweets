@@ -57,7 +57,7 @@ export function Hero() {
               href="/menu"
               className="bg-secondary text-primary font-bold px-8 py-4 rounded-sm hover:bg-white hover:text-primary hover:-translate-y-1 transition-all duration-300 shadow-[0_0_40px_rgba(212,175,55,0.3)] flex items-center gap-2 group"
             >
-              View Menu
+              Explore Menu
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
